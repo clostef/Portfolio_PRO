@@ -25,7 +25,7 @@ const projects = [
     description: "Création d'un portfolio pour photographe professionnel.",
   },
   {
-    name: "Bank user",
+    name: "Bank-user",
     techno: "REACT",
     link: "https://github.com/clostef/bank_user",
     bgImg:

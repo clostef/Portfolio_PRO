@@ -1,5 +1,3 @@
-import * as React from "react";
-
 function IconHtml5(props) {
   return (
     <svg
