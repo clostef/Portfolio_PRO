@@ -16,10 +16,16 @@ export const Description = () => {
         Intégrateur Web
       </h4>
       <p className="leading-7 [&:not(:first-child)]:mt-6">
-        Je suis passionné par le développement web et je souhaite mettre mes
-        compétences en intégration au service de projets innovants. Mon objectif
-        est de créer des sites internet alliant esthétique et fonctionnalité
-        pour offrir une expérience utilisateur optimale.
+        J&apos;ai suivi une formation d&apos;intégrateur web avec Openclassroom
+        qui m&apos;a permis d&apos;acquérir une expérience à travers différents
+        projets (12 projets), me permettant de travailler avec du HTML/CSS,
+        Javascript et React.
+        <br />
+        <br />
+        Passionné par le développement web, je souhaite mettre mes compétences
+        en intégration au service de projets innovants. Mon objectif est de
+        créer des sites internet alliant esthétique et fonctionnalité pour
+        offrir une expérience utilisateur optimale.
       </p>
     </>
   );

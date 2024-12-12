@@ -3,7 +3,6 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -26,7 +25,7 @@ const skills = [
   {
     name: "REACT",
     description:
-      "Junior avec React mais je suis capable de créer différents types d'applications en utilisant cette bibliothèque.",
+      "Junior avec React, je suis capable de créer différents types d'applications en utilisant cette bibliothèque.",
   },
 ];
 
@@ -42,7 +41,10 @@ export const Skills = () => {
       <div className="flex flex-wrap gap-1 justify-center">
         {skills.map((item, index) => {
           return (
-            <Card key={index} className="w-80 pt-4">
+            <Card
+              key={index}
+              className="w-80 pt-4 transition-all duration-300 bg-white hover:bg-gradient-to-r hover:from-blue-300 hover:to-blue-900 hover:text-white"
+            >
               {item.name === "HTML/CSS" ? (
                 <div className="flex justify-center">
                   <IconHtml5 className="size-10" />

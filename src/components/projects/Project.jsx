@@ -14,20 +14,23 @@ const projects = [
     techno: "HTML/CSS",
     link: "https://github.com/clostef/clostef.github.io",
     bgImg: "https://images5.alphacoders.com/380/thumb-1920-380966.jpg",
+    description: "Création d'une interface pour un restaurant.",
   },
   {
-    name: "Kasa project",
+    name: "Portfolio-archi-sophie-bruel",
     techno: "JAVASCRIPT",
-    link: "https://github.com/clostef/Kasa_project",
+    link: "https://github.com/clostef/portfolio-archi-sophie-bruel.git",
     bgImg:
       "https://hospitality-on.com/sites/default/files/import/contenu/velizy2_opt.jpg",
+    description: "Création d'un portfolio pour photographe professionnel.",
   },
   {
-    name: "bank user",
+    name: "Bank user",
     techno: "REACT",
     link: "https://github.com/clostef/bank_user",
     bgImg:
       "https://th.bing.com/th/id/OIP.7HjHMev7e3NTJNWbMdyP4wHaE8?w=600&h=400&rs=1&pid=ImgDetMain",
+    description: "Implémentation d'une interface bancaire.",
   },
 ];
 
@@ -45,7 +48,7 @@ export const Project = () => {
         <CarouselContent>
           {projects.map((item, index) => (
             <CarouselItem key={index}>
-              <div className="p-1">
+              <div className="p-1 relative group">
                 <Card className="relative">
                   <img
                     src={item.bgImg}
@@ -59,12 +62,16 @@ export const Project = () => {
                     <a
                       href={item.link}
                       target="_blank"
-                      className="text-sm text-black bg-white mt-2 p-1 rounded-md underline underline-offset-1"
+                      className=" underline hover:text-blue-500 transition-colors duration-300 text-sm text-black bg-white mt-2 p-1 rounded-md underline-offset-1"
                     >
                       {item.name}
                     </a>
                   </div>
                 </Card>
+                {/* Tooltip */}
+                <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 translate-y-full bg-gray-800 text-white text-sm p-2 rounded-lg opacity-0 group-hover:opacity-100 group-hover:translate-y-2 transition-all duration-300">
+                  {item.description}
+                </div>
               </div>
             </CarouselItem>
           ))}

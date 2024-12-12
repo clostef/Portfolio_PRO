@@ -11,7 +11,10 @@ export const Contact = () => {
       </div>
       <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">
         Contatez moi par mail :{" "}
-        <a className="underline" href="mailto:name@email.com">
+        <a
+          className="underline hover:text-blue-500 transition-colors duration-300"
+          href="mailto:name@email.com"
+        >
           c.stefanutti@outlook.fr
         </a>
       </h4>
