@@ -40,14 +40,17 @@ const Carousel = React.forwardRef(
     );
     const [canScrollPrev, setCanScrollPrev] = React.useState(false);
     const [canScrollNext, setCanScrollNext] = React.useState(false);
+    const [activeIndex, setActiveIndex] = React.useState(0);
+    const [slidesCount, setSlidesCount] = React.useState(0);
 
     const onSelect = React.useCallback((api) => {
       if (!api) {
         return;
       }
-
       setCanScrollPrev(api.canScrollPrev());
       setCanScrollNext(api.canScrollNext());
+      setActiveIndex(api.selectedScrollSnap());
+      setSlidesCount(api.slideNodes().length);
     }, []);
 
     const scrollPrev = React.useCallback(() => {
@@ -57,6 +60,13 @@ const Carousel = React.forwardRef(
     const scrollNext = React.useCallback(() => {
       api?.scrollNext();
     }, [api]);
+
+    const scrollTo = React.useCallback(
+      (index) => {
+        api?.scrollTo(index);
+      },
+      [api]
+    );
 
     const handleKeyDown = React.useCallback(
       (event) => {
@@ -103,8 +113,11 @@ const Carousel = React.forwardRef(
             orientation || (opts?.axis === "y" ? "vertical" : "horizontal"),
           scrollPrev,
           scrollNext,
+          scrollTo,
           canScrollPrev,
           canScrollNext,
+          activeIndex,
+          slidesCount,
         }}
       >
         <div
@@ -192,6 +205,7 @@ const CarouselPrevious = React.forwardRef(
           orientation === "horizontal"
             ? "-left-12 top-1/2 -translate-y-1/2"
             : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
+          "hidden sm:flex",
           className
         )}
         disabled={!canScrollPrev}
@@ -226,6 +240,7 @@ const CarouselNext = React.forwardRef(
           orientation === "horizontal"
             ? "-right-12 top-1/2 -translate-y-1/2"
             : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
+          "hidden sm:flex",
           className
         )}
         disabled={!canScrollNext}
@@ -246,10 +261,30 @@ CarouselNext.propTypes = {
   size: PropTypes.string,
 };
 
+const CarouselDots = () => {
+  const { activeIndex, slidesCount, scrollTo } = useCarousel();
+
+  return (
+    <div className="flex justify-center mt-4 space-x-2">
+      {Array.from({ length: slidesCount }).map((_, index) => (
+        <button
+          key={index}
+          onClick={() => scrollTo(index)}
+          className={cn(
+            "w-3 h-3 rounded-full transition-all",
+            activeIndex === index ? "bg-blue-500 scale-125" : "bg-gray-300"
+          )}
+        />
+      ))}
+    </div>
+  );
+};
+
 export {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselPrevious,
   CarouselNext,
+  CarouselDots,
 };

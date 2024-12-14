@@ -4,8 +4,9 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
   CarouselPrevious,
+  CarouselNext,
+  CarouselDots,
 } from "@/components/ui/carousel";
 
 const projects = [
@@ -52,7 +53,7 @@ export const Project = () => {
                 <Card className="relative">
                   <img
                     src={item.bgImg}
-                    alt="Image"
+                    alt={item.name}
                     className="w-full rounded-lg"
                   />
                   <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
@@ -62,7 +63,8 @@ export const Project = () => {
                     <a
                       href={item.link}
                       target="_blank"
-                      className=" underline hover:text-blue-500 transition-colors duration-300 text-sm text-black bg-white mt-2 p-1 rounded-md underline-offset-1"
+                      rel="noopener noreferrer"
+                      className="underline hover:text-blue-500 transition-colors duration-300 text-sm text-black bg-white mt-2 p-1 rounded-md underline-offset-1"
                     >
                       {item.name}
                     </a>
@@ -78,6 +80,9 @@ export const Project = () => {
         </CarouselContent>
         <CarouselPrevious />
         <CarouselNext />
+        <div className="sm:hidden">
+          <CarouselDots />
+        </div>
       </Carousel>
     </>
   );
