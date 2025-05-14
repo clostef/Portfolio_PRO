@@ -60,30 +60,32 @@ export const Skills = () => {
           return (
             <Card
               key={index}
-              className="w-80 pt-4 transition-all duration-300 bg-white hover:bg-gradient-to-r hover:from-blue-300 hover:to-blue-900 hover:text-white"
+              className="w-80 pt-4 transition-all duration-300 bg-white hover:bg-gradient-to-r hover:from-blue-300 hover:to-blue-900 hover:shadow-xl card-hover group"
             >
               <div className="flex justify-center items-center">
                 {item.name === "HTML/CSS" ? (
                   <>
-                    <IconHtml5 className="size-10 mx-2" />
-                    <IconCss3 className="size-10 mx-2" />
+                    <IconHtml5 className="flip-on-hover mx-2 size-10" />
+                    <IconCss3 className="flip-on-hover mx-2 size-10" />
                   </>
                 ) : item.name === "JAVASCRIPT" ? (
-                  <IconBxlJavascript className="mx-auto h-12 w-12" />
+                  <IconBxlJavascript className="flip-on-hover mx-auto h-12 w-12" />
                 ) : item.name === "TAILWIND CSS" ? (
-                  <IconTailwind className="mx-auto h-12 w-12" />
+                  <IconTailwind className="flip-on-hover mx-auto h-12 w-12" />
                 ) : item.name === "BOOTSTRAP" ? (
-                  <IconBootstrap className="mx-auto h-12 w-12" />
+                  <IconBootstrap className="flip-on-hover mx-auto h-12 w-12" />
                 ) : item.name === "REDUX" ? (
-                  <IconRedux className="mx-auto h-12 w-12" />
+                  <IconRedux className="flip-on-hover mx-auto h-12 w-12" />
                 ) : (
-                  <IconReact className="mx-auto h-12 w-12" />
+                  <IconReact className="flip-on-hover mx-auto h-12 w-12" />
                 )}
               </div>
               <CardHeader>
-                <CardDescription>{item.name}</CardDescription>
+                <CardDescription className="group-hover:text-white transition-colors duration-300">
+                  {item.name}
+                </CardDescription>
               </CardHeader>
-              <CardContent>
+              <CardContent className="text-gray-900 group-hover:text-white transition-colors duration-300">
                 <p>{item.description}</p>
               </CardContent>
             </Card>

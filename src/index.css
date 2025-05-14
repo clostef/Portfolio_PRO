@@ -2,6 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .flip-on-hover {
+    transition: transform 1s ease-in-out;
+    transform-style: preserve-3d;
+    animation: none;
+  }
+
+  .card-hover:hover .flip-on-hover {
+    animation: flipY 1s ease-in-out forwards;
+  }
+
+  @keyframes flipY {
+    0% {
+      transform: rotateY(0deg);
+    }
+    100% {
+      transform: rotateY(360deg);
+    }
+  }
+}
 @layer base {
   :root {
     --background: 0 0% 100%;
