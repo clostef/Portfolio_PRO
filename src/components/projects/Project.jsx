@@ -1,4 +1,4 @@
-import { FolderOpenDot } from "lucide-react";
+import { FolderOpenDot, Github } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import {
   Carousel,
@@ -60,18 +60,26 @@ export const Project = () => {
                     <h1 className="text-white text-4xl font-bold pb-2">
                       {item.techno}
                     </h1>
-                    <a
-                      href={item.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="underline hover:text-blue-500 transition-colors duration-300 text-sm text-black bg-white mt-2 p-1 rounded-md underline-offset-1"
-                    >
-                      {item.name}
-                    </a>
+                    <div className="flex flex-col items-center gap-2">
+                      <div className="flex items-center gap-1">
+                        <Github className="text-white" />
+                        <a
+                          href={item.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="underline hover:text-blue-500 transition-colors duration-300 text-sm text-black bg-white mt-2 p-1 rounded-md underline-offset-1"
+                        >
+                          {item.name}
+                        </a>
+                      </div>
+                    </div>
                   </div>
                 </Card>
-                {/* Tooltip */}
-                <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 translate-y-full bg-gray-800 text-white text-sm p-2 rounded-lg opacity-0 group-hover:opacity-100 group-hover:translate-y-2 transition-all duration-300">
+                <div
+                  className={
+                    "absolute bottom-1 left-1/2 transform -translate-x-1/2 translate-y-full bg-gradient-to-t from-blue-300 to-blue-700 text-white text-sm p-4 rounded-lg opacity-0 group-hover:opacity-100 group-hover:translate-y-2 transition-all duration-300 w-60 h-12 flex items-center justify-center text-center"
+                  }
+                >
                   {item.description}
                 </div>
               </div>

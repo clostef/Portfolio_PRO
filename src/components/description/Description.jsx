@@ -4,7 +4,7 @@ export const Description = () => {
   return (
     <>
       <div id="description" className="flex items-center gap-3 mt-20">
-        <Avatar className="size-16">
+        <Avatar className="size-16 md:size-24">
           <AvatarImage src="" alt="clovis stefanutti" />
           <AvatarFallback className="bg-black text-white">CS</AvatarFallback>
         </Avatar>
@@ -13,19 +13,41 @@ export const Description = () => {
         </h2>
       </div>
       <h4 className="mt-4 scroll-m-20 text-4xl font-semibold tracking-tight italic">
-        Intégrateur Web
+        Développeur Front-End React
       </h4>
-      <p className="leading-7 [&:not(:first-child)]:mt-6">
-        J&apos;ai suivi une formation d&apos;intégrateur web avec Openclassroom
-        qui m&apos;a permis d&apos;acquérir une expérience à travers différents
-        projets (12 projets), me permettant de travailler avec du HTML/CSS,
-        Javascript et React.
-        <br />
-        <br />
-        Passionné par le développement web, je souhaite mettre mes compétences
-        en intégration au service de projets innovants. Mon objectif est de
-        créer des sites internet alliant esthétique et fonctionnalité pour
-        offrir une expérience utilisateur optimale.
+      <p>
+        <span className="font-bold bg-gradient-to-r from-blue-400 to-blue-700 text-white px-1 py-0 rounded">
+          Développeur Web passionné
+        </span>
+        , j&apos;ai suivi une formation avec OpenClassrooms, au cours de
+        laquelle j&apos;ai réalisé
+        <span className="font-bold bg-gradient-to-r from-blue-400 to-blue-700 text-white px-1 py-0 rounded">
+          12 projets concrets
+        </span>
+        . Cette expérience m&apos;a permis de maîtriser les technologies
+        <span className="font-bold bg-gradient-to-r from-blue-400 to-blue-700 text-white px-1 py-0 rounded">
+          HTML, CSS, JavaScript et React
+        </span>
+        , tout en développant une approche pragmatique et orientée solution.
+      </p>
+      <p>
+        <span className="text-decoration-underline">Mon objectif</span> :{" "}
+        <span className="font-bold bg-gradient-to-r from-blue-400 to-blue-700 text-white px-1 py-0 rounded">
+          concevoir des sites web performants, esthétiques et intuitifs
+        </span>
+        , en mettant l&apos;expérience utilisateur au cœur de chaque projet.{" "}
+        <span className="font-bold bg-gradient-to-r from-blue-400 to-blue-700 text-white px-1 py-0 rounded">
+          Curieux
+        </span>{" "}
+        et{" "}
+        <span className="font-bold bg-gradient-to-r from-blue-400 to-blue-700 text-white px-1 py-0 rounded">
+          rigoureux
+        </span>
+        , je suis prêt à relever de
+        <span className="font-bold bg-gradient-to-r from-blue-400 to-blue-700 text-white px-1 py-0 rounded">
+          nouveaux défis
+        </span>{" "}
+        au sein d&apos;une équipe dynamique et innovante.
       </p>
     </>
   );
