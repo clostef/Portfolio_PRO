@@ -93,3 +93,7 @@
   box-sizing: border-box;
   overflow-x: hidden;
 }
+
+.highlight {
+  @apply font-bold bg-gradient-to-r from-blue-400 to-blue-700 text-white px-1 py-0 rounded;
+}

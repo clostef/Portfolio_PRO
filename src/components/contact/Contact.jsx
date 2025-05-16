@@ -116,15 +116,13 @@ export const Contact = () => {
           className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-md hover:bg-blue-100 dark:hover:bg-blue-800 transition"
         >
           <Mail className="w-5 h-5 text-blue-600" />
-          <span className="text-blue-600 font-medium">Email</span>
         </a>
 
         <a
-          href="tel:+3349189819"
+          href="tel:+33649189819"
           className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-md hover:bg-blue-100 dark:hover:bg-blue-800 transition"
         >
           <Phone className="w-5 h-5 text-green-600" />
-          <span className="text-green-600 font-medium">Téléphone</span>
         </a>
 
         <a
