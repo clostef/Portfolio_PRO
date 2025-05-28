@@ -22,7 +22,7 @@ const projects = [
     techno: "JAVASCRIPT",
     link: "https://github.com/clostef/portfolio-archi-sophie-bruel.git",
     bgImg: "/Portfolio_PRO/images/portfolio-archi.webp",
-    description: "Création d'un portfolio pour photographe professionnel.",
+    description: "Création d'un portfolio pour une architecte.",
   },
   {
     name: "debug-project",
