@@ -38,6 +38,13 @@ const projects = [
     bgImg: "/Portfolio_PRO/images/bank-user.webp",
     description: "Implémentation d'une interface bancaire.",
   },
+  {
+    name: "Crypto",
+    techno: "REACT",
+    link: "https://github.com/clostef/crypto.git",
+    bgImg: "/Portfolio_PRO/images/crypto.webp",
+    description: "Création d'un dashboard de crypto.",
+  },
 ];
 
 export const Project = () => {
