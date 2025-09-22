@@ -1,22 +1,7 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-
 export const Description = () => {
-  const placeholder =
-    "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgdmlld0JveD0iMCAwIDEyOCAxMjgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iNjQiIGN5PSI0MCIgcj0iMjAiIGZpbGw9IiNlMmU0ZTgiLz48cGF0aCBkPSJNMTAgMTE0YzAtMjAuNjMgNDEuMzMtMzMgNTQtMzNzNTQgMTIuMzcgNTQgMzMtMTA4IDAtMTA4IDBaIiBmaWxsPSIjZTVlNWU1Ii8+PC9zdmc+";
-
   return (
     <section id="description" className="mt-20">
       <header className="flex items-center gap-3">
-        <Avatar className="size-16 md:size-24">
-          <AvatarImage
-            src={placeholder}
-            alt="Photo de Clovis Stefanutti"
-            loading="lazy"
-            width={96}
-            height={96}
-          />
-          <AvatarFallback className="bg-black text-white">CS</AvatarFallback>
-        </Avatar>
         <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight">
           Clovis Stefanutti
         </h2>

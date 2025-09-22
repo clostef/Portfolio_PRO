@@ -17,27 +17,27 @@ const skills = [
   {
     name: "HTML/CSS",
     description:
-      "Je suis capable de créer des éléments visuels et concevoir des mises en page simples et responsives en utilisant les principes de base du HTML et du CSS.",
+      "Avec HTML et CSS, je crée des structures solides et des interfaces esthétiques, en respectant les bonnes pratiques du responsive design.",
   },
   {
     name: "JAVASCRIPT",
     description:
-      "Je suis capable de créer des fonctionnalités interactives et des applications web simples.",
+      "Avec JavaScript, je développe des fonctionnalités interactives et dynamiques pour enrichir l’expérience utilisateur.",
   },
   {
     name: "REACT",
     description:
-      "Junior avec React, je suis capable de créer différents types d'applications en utilisant cette bibliothèque.",
+      "Junior en React, je maîtrise la création d’applications basées sur des composants réutilisables, assurant à la fois performance et évolutivité.",
   },
   {
     name: "TAILWIND CSS",
     description:
-      "Je maîtrise le framework Tailwind CSS pour la création d'interfaces utilisateur modernes et responsives.",
+      "Avec Tailwind CSS, je développe des interfaces utilisateur modernes et adaptatives, tout en appliquant des pratiques de conception modulaires et maintenables.",
   },
   {
     name: "BOOTSTRAP",
     description:
-      "J'utilise Bootstrap pour structurer rapidement des interfaces responsives avec un système de grille et des composants prédéfinis.",
+      "Je maîtrise Bootstrap pour accélérer le développement d’interfaces responsives et homogènes grâce à son système de grille et ses composants intégrés.",
   },
   {
     name: "REDUX",

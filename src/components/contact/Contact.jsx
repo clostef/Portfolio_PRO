@@ -41,7 +41,9 @@ export const Contact = () => {
     >
       <div className="mb-8 flex items-center gap-3">
         <User2 className="size-8" />
-        <h2 className="text-3xl font-bold tracking-tight">Contact</h2>
+        <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight">
+          Contact
+        </h2>
       </div>
 
       {error && (
