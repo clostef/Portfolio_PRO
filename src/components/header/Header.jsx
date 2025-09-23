@@ -17,20 +17,20 @@ const menuItems = [
 
 export const Header = ({ darkMode, setDarkMode }) => {
   return (
-    <header className="sticky z-10 top-0 flex h-16 items-center justify-between border-b bg-background px-4 md:px-6">
+    <header className="sticky z-10 top-0 flex h-16 items-center justify-between border-b bg-background px-4 md:px-6 shadow-sm rounded-l-lg rounded-r-lg">
       <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
         <a
           href="/"
           className="flex items-center gap-2 text-lg font-semibold hover:text-blue-500 transition-colors duration-300"
         >
-          <Briefcase className="w-6 h-6" />
+          <Briefcase className="w-8 h-8" />
           <span className="sr-only">Mon Portfolio</span>
         </a>
         {menuItems.map((item) => (
           <a
             key={item.link}
             href={`#${item.link}`}
-            className="text-muted-foreground hover:text-foreground"
+            className="text-muted-foreground hover:text-white hover:shadow-xl hover:bg-gradient-to-r hover:from-blue-400 hover:to-blue-700 transition-all duration-300 rounded-md px-2 py-1"
           >
             {item.name}
           </a>

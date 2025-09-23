@@ -86,7 +86,7 @@ export const Skills = () => {
                 </CardDescription>
               </CardHeader>
               <CardContent className="text-gray-900 group-hover:text-white transition-colors duration-300">
-                <p>{item.description}</p>
+                <p className="font-medium">{item.description}</p>
               </CardContent>
             </Card>
           );

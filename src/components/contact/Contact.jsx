@@ -41,7 +41,7 @@ export const Contact = () => {
     >
       <div className="mb-8 flex items-center gap-3">
         <User2 className="size-8" />
-        <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight">
+        <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight drop-shadow-md">
           Contact
         </h2>
       </div>
@@ -61,28 +61,28 @@ export const Contact = () => {
           name="name"
           placeholder="Votre nom"
           required
-          className="w-full p-3 border rounded-lg"
+          className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:shadow-lg transition"
         />
         <input
           type="email"
           name="email"
           placeholder="Votre email"
           required
-          className="w-full p-3 border rounded-lg"
+          className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:shadow-lg transition"
         />
         <textarea
           name="message"
           rows="5"
           placeholder="Votre message"
           required
-          className="w-full p-3 border rounded-lg"
+          className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:shadow-lg transition"
         />
         <input type="text" name="_gotcha" style={{ display: "none" }} />
 
         <button
           type="submit"
           disabled={loading}
-          className={`flex items-center justify-center gap-2 bg-blue-600 text-white px-6 py-2 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg ${
+          className={`flex items-center justify-center gap-2 bg-blue-600 text-white font-medium px-6 py-2 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg ${
             loading ? "opacity-70 cursor-not-allowed" : "hover:bg-blue-700"
           }`}
         >
@@ -115,14 +115,14 @@ export const Contact = () => {
       <div className="mt-8 flex flex-wrap justify-center gap-4">
         <a
           href="mailto:c.stefanutti@outlook.fr"
-          className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-md hover:bg-blue-100 dark:hover:bg-blue-800 transition"
+          className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-md hover:bg-blue-100 dark:hover:bg-blue-800 hover:shadow-lg transition-shadow"
         >
           <Mail className="w-5 h-5 text-blue-600" />
         </a>
 
         <a
           href="tel:+33649189819"
-          className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-md hover:bg-blue-100 dark:hover:bg-blue-800 transition"
+          className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-md hover:bg-blue-100 dark:hover:bg-blue-800 hover:shadow-lg transition-shadow"
         >
           <Phone className="w-5 h-5 text-green-600" />
         </a>
@@ -131,7 +131,7 @@ export const Contact = () => {
           href="https://www.linkedin.com/in/clovis-stefanutti-87517a352/"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-md hover:bg-blue-100 dark:hover:bg-blue-800 transition"
+          className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-md hover:bg-blue-100 dark:hover:bg-blue-800 hover:shadow-lg transition-shadow"
         >
           <Linkedin className="w-5 h-5 text-blue-700" />
           <span className="text-blue-700 font-medium">LinkedIn</span>
@@ -141,7 +141,7 @@ export const Contact = () => {
           href="https://github.com/clostef"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-md hover:bg-blue-100 dark:hover:bg-blue-800 transition"
+          className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-md hover:bg-blue-100 dark:hover:bg-blue-800 hover:shadow-lg transition-shadow"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
