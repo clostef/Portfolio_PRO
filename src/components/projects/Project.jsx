@@ -11,25 +11,11 @@ import {
 
 const projects = [
   {
-    name: "Ohmyfood",
-    techno: "HTML/CSS",
-    link: "https://github.com/clostef/clostef.github.io",
-    bgImg: "/Portfolio_PRO/images/ohmyfood.webp",
-    description: "Création d'une interface pour un restaurant.",
-  },
-  {
-    name: "Portfolio-archi-sophie-bruel",
-    techno: "JAVASCRIPT",
-    link: "https://github.com/clostef/portfolio-archi-sophie-bruel.git",
-    bgImg: "/Portfolio_PRO/images/portfolio-archi.webp",
-    description: "Création d'un portfolio pour une architecte.",
-  },
-  {
-    name: "debug-project",
-    techno: "JAVASCRIPT",
-    link: "https://github.com/clostef/debug-project.git",
-    bgImg: "/Portfolio_PRO/images/debug-project.webp",
-    description: "Déboguer et test unitaire.",
+    name: "Crypto",
+    techno: "REACT",
+    link: "https://github.com/clostef/crypto.git",
+    bgImg: "/Portfolio_PRO/images/crypto.webp",
+    description: "Création d'un dashboard de crypto.",
   },
   {
     name: "Bank-user",
@@ -39,11 +25,25 @@ const projects = [
     description: "Implémentation d'une interface bancaire.",
   },
   {
-    name: "Crypto",
-    techno: "REACT",
-    link: "https://github.com/clostef/crypto.git",
-    bgImg: "/Portfolio_PRO/images/crypto.webp",
-    description: "Création d'un dashboard de crypto.",
+    name: "debug-project",
+    techno: "JAVASCRIPT",
+    link: "https://github.com/clostef/debug-project.git",
+    bgImg: "/Portfolio_PRO/images/debug-project.webp",
+    description: "Déboguer et test unitaire.",
+  },
+  {
+    name: "Portfolio-archi-sophie-bruel",
+    techno: "JAVASCRIPT",
+    link: "https://github.com/clostef/portfolio-archi-sophie-bruel.git",
+    bgImg: "/Portfolio_PRO/images/portfolio-archi.webp",
+    description: "Création d'un portfolio pour une architecte.",
+  },
+  {
+    name: "Ohmyfood",
+    techno: "HTML/CSS",
+    link: "https://github.com/clostef/clostef.github.io",
+    bgImg: "/Portfolio_PRO/images/ohmyfood.webp",
+    description: "Création d'une interface pour un restaurant.",
   },
 ];
 
