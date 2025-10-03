@@ -1,4 +1,4 @@
-import { FolderOpenDot, Github } from "lucide-react";
+import { FolderOpenDot, Github, Globe } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import {
   Carousel,
@@ -16,6 +16,14 @@ const projects = [
     link: "https://github.com/clostef/crypto.git",
     bgImg: "/Portfolio_PRO/images/crypto.webp",
     description: "Création d'un dashboard de crypto.",
+  },
+  {
+    name: "Pizzeria-React",
+    techno: "REACT",
+    link: "https://github.com/clostef/Pizzeria-React.git",
+    site: "https://clostef.github.io/Pizzeria-React/",
+    bgImg: "/Portfolio_PRO/images/fbpizza.png",
+    description: "Landing page de pizzeria avec une interface utilisateur.",
   },
   {
     name: "Bank-user",
@@ -49,10 +57,13 @@ const projects = [
 
 export const Project = () => {
   return (
-    <section id="projets" aria-label="Section projets" className="mt-16">
+    <section aria-label="Section projets" className="mt-16">
       <div className="flex gap-3 items-center mb-4">
         <FolderOpenDot className="size-8" aria-hidden="true" />
-        <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight">
+        <h2
+          id="projets"
+          className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight"
+        >
           Projets
         </h2>
       </div>
@@ -76,18 +87,36 @@ export const Project = () => {
                     <h3 className="text-white text-xl sm:text-2xl font-bold mb-2 drop-shadow">
                       {item.techno}
                     </h3>
-                    <a
-                      href={item.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 bg-white text-black font-medium px-3 sm:px-4 py-2 rounded-md hover:bg-gray-100 hover:scale-105 active:scale-95 transition-transform duration-200"
-                    >
-                      <Github
-                        className="w-4 h-4 sm:w-5 sm:h-5"
-                        aria-hidden="true"
-                      />
-                      Voir code
-                    </a>
+
+                    <div className="flex gap-2">
+                      <a
+                        href={item.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 bg-gray-200 text-gray-800 font-medium px-3 sm:px-4 py-2 rounded-md hover:bg-gray-300 hover:scale-105 active:scale-95 transition-transform duration-200"
+                      >
+                        <Github
+                          className="w-4 h-4 sm:w-5 sm:h-5"
+                          aria-hidden="true"
+                        />
+                        Voir code
+                      </a>
+
+                      {item.name === "Pizzeria-React" && (
+                        <a
+                          href={item.site}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 bg-gray-200 text-gray-800 font-medium px-3 sm:px-4 py-2 rounded-md hover:bg-gray-300 hover:scale-105 active:scale-95 transition-transform duration-200"
+                        >
+                          <Globe
+                            className="w-4 h-4 sm:w-5 sm:h-5"
+                            aria-hidden="true"
+                          />
+                          Voir site
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </Card>
 
