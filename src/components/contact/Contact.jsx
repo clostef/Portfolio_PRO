@@ -114,14 +114,14 @@ export const Contact = () => {
 
       <div className="mt-8 flex flex-wrap justify-center gap-4">
         <a
-          href="mailto:c.stefanutti@outlook.fr"
+          href="mailto: clovisstefanutti@gmail.com"
           className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-md hover:bg-blue-100 dark:hover:bg-blue-800 hover:shadow-lg transition-shadow"
         >
           <Mail className="w-5 h-5 text-blue-600" />
         </a>
 
         <a
-          href="tel:+33649189819"
+          href="tel: +33649189819"
           className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-md hover:bg-blue-100 dark:hover:bg-blue-800 hover:shadow-lg transition-shadow"
         >
           <Phone className="w-5 h-5 text-green-600" />

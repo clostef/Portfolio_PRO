@@ -14,7 +14,7 @@ const projects = [
     name: "Crypto",
     techno: "REACT",
     link: "https://github.com/clostef/crypto.git",
-    bgImg: "/Portfolio_PRO/images/crypto.webp",
+    bgImg: "/Portfolio_PRO/images/crypto.png",
     description: "Création d'un dashboard de crypto.",
   },
   {
@@ -26,10 +26,18 @@ const projects = [
     description: "Landing page de pizzeria avec une interface utilisateur.",
   },
   {
+    name: "Kasa-project",
+    techno: "REACT",
+    link: "https://github.com/clostef/Kasa_project.git",
+    site: "https://clostef.github.io/Kasa_project/",
+    bgImg: "/Portfolio_PRO/images/kasa.png",
+    description: "Création d'une plateforme de location de chambres d’hôtes",
+  },
+  {
     name: "Bank-user",
     techno: "REACT",
     link: "https://github.com/clostef/bank_user",
-    bgImg: "/Portfolio_PRO/images/bank-user.webp",
+    bgImg: "/Portfolio_PRO/images/bank-user.png",
     description: "Implémentation d'une interface bancaire.",
   },
   {
@@ -102,20 +110,22 @@ export const Project = () => {
                         Voir code
                       </a>
 
-                      {item.name === "Pizzeria-React" && (
-                        <a
-                          href={item.site}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 bg-gray-200 text-gray-800 font-medium px-3 sm:px-4 py-2 rounded-md hover:bg-gray-300 hover:scale-105 active:scale-95 transition-transform duration-200"
-                        >
-                          <Globe
-                            className="w-4 h-4 sm:w-5 sm:h-5"
-                            aria-hidden="true"
-                          />
-                          Voir site
-                        </a>
-                      )}
+                      {(item.name === "Pizzeria-React" ||
+                        item.name === "Kasa-project") &&
+                        item.site && (
+                          <a
+                            href={item.site}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 bg-gray-200 text-gray-800 font-medium px-3 sm:px-4 py-2 rounded-md hover:bg-gray-300 hover:scale-105 active:scale-95 transition-transform duration-200"
+                          >
+                            <Globe
+                              className="w-4 h-4 sm:w-5 sm:h-5"
+                              aria-hidden="true"
+                            />
+                            Voir site
+                          </a>
+                        )}
                     </div>
                   </div>
                 </Card>

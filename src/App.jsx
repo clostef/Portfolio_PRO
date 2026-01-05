@@ -5,6 +5,7 @@ import { Description } from "./components/description/Description";
 import { Project } from "./components/projects/Project";
 import { Skills } from "@/components/skills/Skills";
 import { Contact } from "@/components/contact/Contact";
+import { ScrollToTopButton } from "@/components/scroll button/ScrollToTopButton";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -27,6 +28,12 @@ function App() {
         <Skills />
         <Contact />
       </div>
+
+      <ScrollToTopButton />
+
+      <footer className="py-4 text-center text-sm text-muted-foreground border-t border-gray-200 dark:border-gray-700 dark:text-gray-400">
+        © 2025 Clovis Stefanutti. Tous droits réservés.
+      </footer>
     </main>
   );
 }
