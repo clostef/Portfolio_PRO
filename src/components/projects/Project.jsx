@@ -1,4 +1,5 @@
-import { FolderOpenDot, Github, Globe } from "lucide-react";
+import { useState, useRef, useEffect } from "react";
+import { FolderOpenDot, Github, Globe, Info } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import {
   Carousel,
@@ -14,6 +15,7 @@ const projects = [
     name: "Crypto",
     techno: "REACT",
     link: "https://github.com/clostef/crypto.git",
+    site: "https://crypto-frontend-0dp4.onrender.com",
     bgImg: "/Portfolio_PRO/images/crypto.png",
     description: "Création d'un dashboard de crypto.",
   },
@@ -51,19 +53,43 @@ const projects = [
     name: "Portfolio-archi-sophie-bruel",
     techno: "JAVASCRIPT",
     link: "https://github.com/clostef/portfolio-archi-sophie-bruel.git",
-    bgImg: "/Portfolio_PRO/images/portfolio-archi.webp",
+    bgImg: "/Portfolio_PRO/images/portfolio-archi.png",
     description: "Création d'un portfolio pour une architecte.",
   },
   {
     name: "Ohmyfood",
     techno: "HTML/CSS",
     link: "https://github.com/clostef/clostef.github.io",
-    bgImg: "/Portfolio_PRO/images/ohmyfood.webp",
+    bgImg: "/Portfolio_PRO/images/ohmyfood.png",
     description: "Création d'une interface pour un restaurant.",
   },
 ];
 
 export const Project = () => {
+  const [mobileTooltipVisibleIndex, setMobileTooltipVisibleIndex] =
+    useState(null);
+  const cardRefs = useRef([]);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        mobileTooltipVisibleIndex !== null &&
+        cardRefs.current[mobileTooltipVisibleIndex] &&
+        !cardRefs.current[mobileTooltipVisibleIndex].contains(event.target)
+      ) {
+        setMobileTooltipVisibleIndex(null);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+    };
+  }, [mobileTooltipVisibleIndex]);
+
   return (
     <section aria-label="Section projets" className="mt-16">
       <div className="flex gap-3 items-center mb-4">
@@ -80,61 +106,158 @@ export const Project = () => {
         <CarouselContent>
           {projects.map((item, index) => (
             <CarouselItem key={index}>
-              <div className="p-1 relative group">
-                <Card className="relative overflow-hidden rounded-lg">
+              <div
+                className="p-1 relative group"
+                ref={(el) => (cardRefs.current[index] = el)}
+              >
+                <Card className="relative overflow-visible rounded-lg">
                   <img
                     src={item.bgImg}
                     alt={`Aperçu du projet ${item.name}`}
                     loading={index === 0 ? "eager" : "lazy"}
-                    className="w-full object-cover rounded-lg
-                               h-36 sm:h-48 md:h-56 lg:h-64
-                               transition duration-300 group-hover:blur-sm group-hover:brightness-75"
+                    className="
+                      w-full object-cover rounded-lg
+                      h-36 sm:h-48 md:h-56 lg:h-64
+                      transition duration-300
+                      group-hover:blur-sm group-hover:brightness-75
+                    "
                   />
 
                   <div className="absolute inset-0 flex flex-col items-center justify-center text-center z-10 px-2">
                     <h3 className="text-white text-xl sm:text-2xl font-bold mb-2 drop-shadow">
                       {item.techno}
                     </h3>
-
-                    <div className="flex gap-2">
+                    <div className="flex gap-2 flex-wrap justify-center">
                       <a
                         href={item.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 bg-gray-200 text-gray-800 font-medium px-3 sm:px-4 py-2 rounded-md hover:bg-gray-300 hover:scale-105 active:scale-95 transition-transform duration-200"
+                        className="
+                          inline-flex items-center gap-2
+                          bg-gray-200 text-gray-800 font-medium
+                          px-3 sm:px-4 py-2 rounded-md
+                          hover:bg-gray-300 hover:scale-105
+                          active:scale-95
+                          transition-transform duration-200
+                        "
                       >
-                        <Github
-                          className="w-4 h-4 sm:w-5 sm:h-5"
-                          aria-hidden="true"
-                        />
+                        <Github className="w-4 h-4 sm:w-5 sm:h-5" />
                         Voir code
                       </a>
-
-                      {(item.name === "Pizzeria-React" ||
-                        item.name === "Kasa-project") &&
-                        item.site && (
-                          <a
-                            href={item.site}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 bg-gray-200 text-gray-800 font-medium px-3 sm:px-4 py-2 rounded-md hover:bg-gray-300 hover:scale-105 active:scale-95 transition-transform duration-200"
-                          >
-                            <Globe
-                              className="w-4 h-4 sm:w-5 sm:h-5"
-                              aria-hidden="true"
-                            />
-                            Voir site
-                          </a>
-                        )}
+                      {item.site && (
+                        <a
+                          href={item.site}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="
+                            inline-flex items-center gap-2
+                            bg-gray-200 text-gray-800 font-medium
+                            px-3 sm:px-4 py-2 rounded-md
+                            hover:bg-gray-300 hover:scale-105
+                            active:scale-95
+                            transition-transform duration-200
+                          "
+                        >
+                          <Globe className="w-4 h-4 sm:w-5 sm:h-5" />
+                          Voir site
+                        </a>
+                      )}
                     </div>
                   </div>
+
+                  {item.name === "Crypto" && (
+                    <div
+                      className="
+                        hidden sm:block
+                        absolute top-2 left-1/2 -translate-x-1/2
+                        z-30 w-64
+                        rounded-lg
+                        bg-white/95 dark:bg-gray-900/95
+                        text-gray-800 dark:text-gray-100
+                        text-xs sm:text-sm
+                        p-3
+                        shadow-xl
+                        border border-gray-200 dark:border-gray-700
+                        opacity-0 scale-95
+                        group-hover:opacity-100 group-hover:scale-100
+                        transition-all duration-300 ease-out
+                      "
+                    >
+                      <p>
+                        <span className="font-medium">Email :</span>{" "}
+                        j.doe@gmail.com
+                      </p>
+                      <p>
+                        <span className="font-medium">Mot de passe :</span>{" "}
+                        password1
+                      </p>
+                      <p>
+                        <span className="font-medium">Render :</span> Première
+                        connexion lente
+                      </p>
+                    </div>
+                  )}
+
+                  {item.name === "Crypto" && (
+                    <div className="sm:hidden absolute top-2 right-2 z-30">
+                      <button
+                        onClick={() =>
+                          setMobileTooltipVisibleIndex(
+                            mobileTooltipVisibleIndex === index ? null : index
+                          )
+                        }
+                        className="w-6 h-6 bg-gray-200 rounded-full flex items-center justify-center shadow-md"
+                      >
+                        <Info className="w-4 h-4 text-gray-700" />
+                      </button>
+                    </div>
+                  )}
+
+                  {item.name === "Crypto" &&
+                    mobileTooltipVisibleIndex === index && (
+                      <div
+                        className="
+                        sm:hidden
+                        absolute top-2 left-1/2 -translate-x-1/2
+                        z-30 w-64
+                        rounded-lg
+                        bg-white/95 dark:bg-gray-900/95
+                        text-gray-800 dark:text-gray-100
+                        text-xs sm:text-sm
+                        p-3
+                        shadow-xl
+                        border border-gray-200 dark:border-gray-700
+                        text-center
+                      "
+                      >
+                        <p>
+                          <span className="font-medium">Email :</span>{" "}
+                          j.doe@gmail.com
+                        </p>
+                        <p>
+                          <span className="font-medium">Mot de passe :</span>{" "}
+                          password1
+                        </p>
+                        <p>
+                          <span className="font-medium">Render :</span> Première
+                          connexion lente
+                        </p>
+                      </div>
+                    )}
                 </Card>
 
                 <div
-                  className="absolute bottom-1 left-1/2 transform -translate-x-1/2 translate-y-full
-                                bg-gradient-to-t from-blue-300 to-blue-700 text-white text-xs sm:text-sm
-                                p-3 rounded-lg opacity-0 group-hover:opacity-100 group-hover:translate-y-2
-                                transition-all duration-300 w-56 sm:w-60 h-12 flex items-center justify-center text-center z-20"
+                  className="
+                    absolute bottom-1 left-1/2 -translate-x-1/2 translate-y-full
+                    bg-gradient-to-t from-blue-300 to-blue-700
+                    text-white text-xs sm:text-sm
+                    p-3 rounded-lg
+                    opacity-0 group-hover:opacity-100 group-hover:translate-y-2
+                    transition-all duration-300
+                    w-56 sm:w-60 h-12
+                    flex items-center justify-center text-center
+                    z-20
+                  "
                 >
                   {item.description}
                 </div>
@@ -142,8 +265,10 @@ export const Project = () => {
             </CarouselItem>
           ))}
         </CarouselContent>
+
         <CarouselPrevious />
         <CarouselNext />
+
         <div className="sm:hidden">
           <CarouselDots />
         </div>
