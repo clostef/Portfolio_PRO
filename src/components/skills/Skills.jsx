@@ -1,4 +1,4 @@
-import { FileBadge2 } from "lucide-react";
+import { ClipboardCheck } from "lucide-react";
 import {
   Card,
   CardContent,
@@ -49,15 +49,25 @@ const skills = [
 export const Skills = () => {
   return (
     <>
-      <div className="flex gap-3 items-center">
-        <FileBadge2 className="size-8" />
+      <div className="flex items-center gap-2 mb-0 justify-center sm:justify-start mt-10">
+        <ClipboardCheck className="size-8 text-yellow-500" aria-hidden="true" />
         <h2
           id="compétences"
-          className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0"
+          className="
+      scroll-m-20
+      text-3xl font-extrabold tracking-wide
+      text-gray-900 dark:text-white
+      drop-shadow-md
+      border-b-2 border-gray-300 pb-2
+      transition-all duration-300
+      hover:border-gray-600
+      text-center sm:text-left
+    "
         >
           Compétences
         </h2>
       </div>
+
       <div className="flex flex-wrap gap-1 justify-center">
         {skills.map((item, index) => {
           return (

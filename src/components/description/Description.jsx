@@ -1,8 +1,19 @@
 export const Description = () => {
   return (
     <section id="description" className="mt-20">
-      <header className="flex items-center gap-3">
-        <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight drop-shadow-md">
+      <header className="flex items-center gap-3 mb-8 sm:justify-start justify-center sm:flex-row flex-col sm:items-center">
+        <h2
+          className="
+      scroll-m-20
+      border-b-2 border-gray-300 pb-2
+      text-3xl font-extrabold tracking-wide
+      text-gray-900 dark:text-white
+      drop-shadow-md
+      transition-all duration-300
+      hover:border-gray-600
+      text-center sm:text-left
+    "
+        >
           Clovis Stefanutti
         </h2>
       </header>

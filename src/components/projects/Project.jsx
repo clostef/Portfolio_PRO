@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { FolderOpenDot, Github, Globe, Info } from "lucide-react";
+import { Github, ExternalLink, Info, Award } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import {
   Carousel,
@@ -17,7 +17,8 @@ const projects = [
     link: "https://github.com/clostef/crypto.git",
     site: "https://crypto-frontend-0dp4.onrender.com",
     bgImg: "/Portfolio_PRO/images/crypto.png",
-    description: "Création d'un dashboard de crypto.",
+    description:
+      "Dashboard de suivi de cryptomonnaies avec graphiques dynamiques.",
   },
   {
     name: "Pizzeria-React",
@@ -25,7 +26,7 @@ const projects = [
     link: "https://github.com/clostef/Pizzeria-React.git",
     site: "https://clostef.github.io/Pizzeria-React/",
     bgImg: "/Portfolio_PRO/images/fbpizza.png",
-    description: "Landing page de pizzeria avec une interface utilisateur.",
+    description: "Landing page de pizzeria avec interface utilisateur moderne.",
   },
   {
     name: "Kasa-project",
@@ -33,51 +34,50 @@ const projects = [
     link: "https://github.com/clostef/Kasa_project.git",
     site: "https://clostef.github.io/Kasa_project/",
     bgImg: "/Portfolio_PRO/images/kasa.png",
-    description: "Création d'une plateforme de location de chambres d’hôtes",
+    description: "Plateforme de location de logements type Airbnb.",
   },
   {
     name: "Bank-user",
     techno: "REACT",
     link: "https://github.com/clostef/bank_user",
     bgImg: "/Portfolio_PRO/images/bank-user.png",
-    description: "Implémentation d'une interface bancaire.",
+    description: "Interface bancaire avec gestion utilisateur.",
   },
   {
     name: "debug-project",
     techno: "JAVASCRIPT",
     link: "https://github.com/clostef/debug-project.git",
     bgImg: "/Portfolio_PRO/images/debug-project.webp",
-    description: "Déboguer et test unitaire.",
+    description: "Débogage et mise en place de tests unitaires.",
   },
   {
     name: "Portfolio-archi-sophie-bruel",
     techno: "JAVASCRIPT",
     link: "https://github.com/clostef/portfolio-archi-sophie-bruel.git",
     bgImg: "/Portfolio_PRO/images/portfolio-archi.png",
-    description: "Création d'un portfolio pour une architecte.",
+    description: "Portfolio professionnel pour une architecte.",
   },
   {
     name: "Ohmyfood",
-    techno: "HTML/CSS",
+    techno: "HTML / CSS",
     link: "https://github.com/clostef/clostef.github.io",
     bgImg: "/Portfolio_PRO/images/ohmyfood.png",
-    description: "Création d'une interface pour un restaurant.",
+    description: "Intégration d’interface pour un restaurant.",
   },
 ];
 
 export const Project = () => {
-  const [mobileTooltipVisibleIndex, setMobileTooltipVisibleIndex] =
-    useState(null);
+  const [tooltipIndex, setTooltipIndex] = useState(null);
   const cardRefs = useRef([]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
-        mobileTooltipVisibleIndex !== null &&
-        cardRefs.current[mobileTooltipVisibleIndex] &&
-        !cardRefs.current[mobileTooltipVisibleIndex].contains(event.target)
+        tooltipIndex !== null &&
+        cardRefs.current[tooltipIndex] &&
+        !cardRefs.current[tooltipIndex].contains(event.target)
       ) {
-        setMobileTooltipVisibleIndex(null);
+        setTooltipIndex(null);
       }
     };
 
@@ -88,15 +88,24 @@ export const Project = () => {
       document.removeEventListener("mousedown", handleClickOutside);
       document.removeEventListener("touchstart", handleClickOutside);
     };
-  }, [mobileTooltipVisibleIndex]);
+  }, [tooltipIndex]);
 
   return (
     <section aria-label="Section projets" className="mt-16">
-      <div className="flex gap-3 items-center mb-4">
-        <FolderOpenDot className="size-8" aria-hidden="true" />
+      <div className="flex items-center gap-2 mb-4 justify-center sm:justify-start">
+        <Award className="size-8 text-green-600" aria-hidden="true" />
         <h2
           id="projets"
-          className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight"
+          className="
+      scroll-m-20
+      text-3xl font-extrabold tracking-wide
+      text-gray-900 dark:text-white
+      drop-shadow-md
+      border-b-2 border-pink-300 pb-2
+      transition-all duration-300
+      hover:border-gray-600
+      text-center sm:text-left
+    "
         >
           Projets
         </h2>
@@ -110,7 +119,7 @@ export const Project = () => {
                 className="p-1 relative group"
                 ref={(el) => (cardRefs.current[index] = el)}
               >
-                <Card className="relative overflow-visible rounded-lg">
+                <Card className="relative overflow-hidden rounded-lg">
                   <img
                     src={item.bgImg}
                     alt={`Aperçu du projet ${item.name}`}
@@ -123,144 +132,125 @@ export const Project = () => {
                     "
                   />
 
-                  <div className="absolute inset-0 flex flex-col items-center justify-center text-center z-10 px-2">
-                    <h3 className="text-white text-xl sm:text-2xl font-bold mb-2 drop-shadow">
+                  <div className="absolute top-3 left-1/2 -translate-x-1/2 z-20">
+                    <span
+                      className="
+                      text-white text-sm sm:text-base font-semibold
+                      bg-black/50 px-4 py-1 rounded-full
+                      backdrop-blur-sm
+                    "
+                    >
                       {item.techno}
-                    </h3>
-                    <div className="flex gap-2 flex-wrap justify-center">
+                    </span>
+                  </div>
+
+                  <div className="absolute inset-0 flex items-center justify-center gap-3 z-20">
+                    <a
+                      href={item.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="
+                        inline-flex items-center gap-2
+                        bg-white/90 text-gray-900
+                        px-4 py-2 rounded-md
+                        shadow-sm
+                        hover:bg-white hover:shadow-md hover:scale-105
+                        transition-all
+                      "
+                    >
+                      <Github className="w-4 h-4" />
+                      Code
+                    </a>
+
+                    {item.site && (
                       <a
-                        href={item.link}
+                        href={item.site}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="
                           inline-flex items-center gap-2
-                          bg-gray-200 text-gray-800 font-medium
-                          px-3 sm:px-4 py-2 rounded-md
-                          hover:bg-gray-300 hover:scale-105
-                          active:scale-95
-                          transition-transform duration-200
+                          bg-white/90 text-gray-900
+                          px-4 py-2 rounded-md
+                          shadow-sm
+                          hover:bg-white hover:shadow-md hover:scale-105
+                          transition-all
                         "
                       >
-                        <Github className="w-4 h-4 sm:w-5 sm:h-5" />
-                        Voir code
+                        <ExternalLink className="w-4 h-4" />
+                        Site
                       </a>
-                      {item.site && (
-                        <a
-                          href={item.site}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="
-                            inline-flex items-center gap-2
-                            bg-gray-200 text-gray-800 font-medium
-                            px-3 sm:px-4 py-2 rounded-md
-                            hover:bg-gray-300 hover:scale-105
-                            active:scale-95
-                            transition-transform duration-200
-                          "
-                        >
-                          <Globe className="w-4 h-4 sm:w-5 sm:h-5" />
-                          Voir site
-                        </a>
-                      )}
-                    </div>
+                    )}
                   </div>
 
                   {item.name === "Crypto" && (
-                    <div
-                      className="
-                        hidden sm:block
-                        absolute top-2 left-1/2 -translate-x-1/2
-                        z-30 w-64
-                        rounded-lg
-                        bg-white/95 dark:bg-gray-900/95
-                        text-gray-800 dark:text-gray-100
-                        text-xs sm:text-sm
-                        p-3
-                        shadow-xl
-                        border border-gray-200 dark:border-gray-700
-                        opacity-0 scale-95
-                        group-hover:opacity-100 group-hover:scale-100
-                        transition-all duration-300 ease-out
-                      "
-                    >
-                      <p>
-                        <span className="font-medium">Email :</span>{" "}
-                        j.doe@gmail.com
-                      </p>
-                      <p>
-                        <span className="font-medium">Mot de passe :</span>{" "}
-                        password1
-                      </p>
-                      <p>
-                        <span className="font-medium">Render :</span> Première
-                        connexion lente
-                      </p>
-                    </div>
-                  )}
-
-                  {item.name === "Crypto" && (
-                    <div className="sm:hidden absolute top-2 right-2 z-30">
+                    <div className="absolute top-2 right-2 z-40 sm:hidden">
                       <button
-                        onClick={() =>
-                          setMobileTooltipVisibleIndex(
-                            mobileTooltipVisibleIndex === index ? null : index
-                          )
-                        }
-                        className="w-6 h-6 bg-gray-200 rounded-full flex items-center justify-center shadow-md"
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setTooltipIndex(
+                            tooltipIndex === index ? null : index
+                          );
+                        }}
+                        className="
+                          w-7 h-7
+                          bg-white/90
+                          rounded-full
+                          flex items-center justify-center
+                          shadow-md
+                          hover:bg-white
+                          transition
+                        "
+                        aria-label="Informations projet Crypto"
                       >
                         <Info className="w-4 h-4 text-gray-700" />
                       </button>
                     </div>
                   )}
 
-                  {item.name === "Crypto" &&
-                    mobileTooltipVisibleIndex === index && (
-                      <div
-                        className="
+                  {item.name === "Crypto" && tooltipIndex === index && (
+                    <div
+                      className="
                         sm:hidden
-                        absolute top-2 left-1/2 -translate-x-1/2
-                        z-30 w-64
+                        absolute top-12 left-1/2 -translate-x-1/2
+                        z-50
+                        w-56
                         rounded-lg
-                        bg-white/95 dark:bg-gray-900/95
-                        text-gray-800 dark:text-gray-100
-                        text-xs sm:text-sm
-                        p-3
+                        bg-white
+                        text-gray-800
+                        text-xs
+                        p-2
                         shadow-xl
-                        border border-gray-200 dark:border-gray-700
+                        border
                         text-center
                       "
-                      >
-                        <p>
-                          <span className="font-medium">Email :</span>{" "}
-                          j.doe@gmail.com
-                        </p>
-                        <p>
-                          <span className="font-medium">Mot de passe :</span>{" "}
-                          password1
-                        </p>
-                        <p>
-                          <span className="font-medium">Render :</span> Première
-                          connexion lente
-                        </p>
-                      </div>
-                    )}
-                </Card>
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <p className="font-medium mb-1">
+                        Compte de démonstration
+                      </p>
+                      <p>ID : demo@crypto.app</p>
+                      <p>MP : demo123</p>
+                      <p className="italic opacity-70 mt-2 text-[11px]">
+                        Render free → première connexion lente
+                      </p>
+                    </div>
+                  )}
 
-                <div
-                  className="
-                    absolute bottom-1 left-1/2 -translate-x-1/2 translate-y-full
-                    bg-gradient-to-t from-blue-300 to-blue-700
-                    text-white text-xs sm:text-sm
-                    p-3 rounded-lg
-                    opacity-0 group-hover:opacity-100 group-hover:translate-y-2
-                    transition-all duration-300
-                    w-56 sm:w-60 h-12
-                    flex items-center justify-center text-center
-                    z-20
-                  "
-                >
-                  {item.description}
-                </div>
+                  <div
+                    className="absolute inset-0 bg-black/60
+ text-white text-xs sm:text-sm   
+    opacity-0 group-hover:opacity-100
+    transition-opacity duration-300
+    flex items-end justify-center
+    p-4
+    rounded-lg
+    z-10
+  "
+                  >
+                    <p className="text-center">{item.description}</p>
+                  </div>
+                </Card>
               </div>
             </CarouselItem>
           ))}

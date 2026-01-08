@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Mail, Phone, Linkedin, User2 } from "lucide-react";
+import { Mail, Phone, Linkedin, MessageCircle } from "lucide-react";
 
 export const Contact = () => {
   const [error, setError] = useState(false);
@@ -39,9 +39,20 @@ export const Contact = () => {
       id="contact"
       className="relative max-w-3xl mx-auto py-12 px-4 sm:px-6 lg:px-8"
     >
-      <div className="mb-8 flex items-center gap-3">
-        <User2 className="size-8" />
-        <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight drop-shadow-md">
+      <div className="mb-6 flex items-center gap-2 justify-center sm:justify-start">
+        <MessageCircle className="size-8 text-orange-600" aria-hidden="true" />
+        <h2
+          className="
+      scroll-m-20
+      border-b-2 border-gray-300 pb-2
+      text-3xl font-extrabold tracking-wide
+      text-gray-900 dark:text-white
+      drop-shadow-md
+      transition-all duration-300
+      hover:border-gray-600
+      text-center sm:text-left
+    "
+        >
           Contact
         </h2>
       </div>
