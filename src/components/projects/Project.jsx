@@ -229,8 +229,8 @@ export const Project = () => {
                       <p className="font-medium mb-1">
                         Compte de démonstration
                       </p>
-                      <p>ID : demo@crypto.app</p>
-                      <p>MP : demo123</p>
+                      <p>ID : j.doe@gmail.com</p>
+                      <p>MP : password1</p>
                       <p className="italic opacity-70 mt-2 text-[11px]">
                         Render free → première connexion lente
                       </p>
