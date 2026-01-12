@@ -61,7 +61,6 @@ export const Contact = () => {
       id="contact"
       className="relative max-w-3xl lg:max-w-5xl mx-auto py-16 px-4 sm:px-6"
     >
-      {/* Titre */}
       <div className="mb-8 flex items-center gap-2 justify-center sm:justify-start">
         <MessageCircle className="size-8 text-blue-600" />
         <h2 className="border-b-2 border-gray-300 pb-2 text-3xl font-extrabold tracking-wide text-gray-900 dark:text-white">
@@ -69,20 +68,17 @@ export const Contact = () => {
         </h2>
       </div>
 
-      {/* Erreur */}
       {error && (
         <div className="mb-6 bg-red-100 text-red-800 p-4 rounded-lg text-center shadow">
           Une erreur est survenue. Veuillez réessayer.
         </div>
       )}
 
-      {/* Formulaire */}
       {!showModal && (
         <form
           onSubmit={handleSubmit}
           className="max-w-xl mx-auto grid gap-4 bg-white dark:bg-zinc-900 p-6 rounded-2xl shadow-lg border border-gray-200 dark:border-zinc-700"
         >
-          {/* Nom */}
           <div className="grid gap-1">
             <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
               Nom
@@ -98,7 +94,6 @@ export const Contact = () => {
             />
           </div>
 
-          {/* Email */}
           <div className="grid gap-1">
             <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
               Email
@@ -114,7 +109,6 @@ export const Contact = () => {
             />
           </div>
 
-          {/* Message */}
           <div className="grid gap-1 relative">
             <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
               Message
@@ -170,7 +164,6 @@ export const Contact = () => {
         </form>
       )}
 
-      {/* Liens */}
       <div className="mt-10 flex flex-wrap justify-center gap-4">
         <a
           href="mailto:clovisstefanutti@gmail.com"
@@ -207,7 +200,6 @@ export const Contact = () => {
         </a>
       </div>
 
-      {/* Zoom Modal */}
       {zoomOpen && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4 overflow-x-hidden"
@@ -233,7 +225,6 @@ export const Contact = () => {
         </div>
       )}
 
-      {/* Confirmation Modale */}
       {showModal && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4"
