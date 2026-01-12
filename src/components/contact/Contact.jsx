@@ -1,10 +1,26 @@
-import { useState } from "react";
-import { Mail, Phone, Linkedin, MessageCircle } from "lucide-react";
+import { useState, useEffect } from "react";
+import {
+  Github,
+  Mail,
+  Phone,
+  Linkedin,
+  MessageCircle,
+  ZoomIn,
+} from "lucide-react";
+
+const MAX_CHARS = 500;
 
 export const Contact = () => {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [remaining, setRemaining] = useState(MAX_CHARS);
+  const [message, setMessage] = useState("");
+  const [zoomOpen, setZoomOpen] = useState(false);
+
+  useEffect(() => {
+    document.body.style.overflow = showModal || zoomOpen ? "hidden" : "auto";
+  }, [showModal, zoomOpen]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,163 +39,219 @@ export const Contact = () => {
       if (res.ok) {
         setError(false);
         form.reset();
+        setMessage("");
+        setRemaining(MAX_CHARS);
         setShowModal(true);
       } else {
         setError(true);
       }
-    } catch (err) {
+    } catch {
       setError(true);
     } finally {
       setLoading(false);
     }
   };
 
+  const handleBackdropClick = (setter) => {
+    if (window.innerWidth >= 768) setter(false);
+  };
+
   return (
     <section
       id="contact"
-      className="relative max-w-3xl mx-auto py-12 px-4 sm:px-6 lg:px-8"
+      className="relative max-w-3xl lg:max-w-5xl mx-auto py-16 px-4 sm:px-6"
     >
-      <div className="mb-6 flex items-center gap-2 justify-center sm:justify-start">
-        <MessageCircle className="size-8 text-orange-600" aria-hidden="true" />
-        <h2
-          className="
-      scroll-m-20
-      border-b-2 border-gray-300 pb-2
-      text-3xl font-extrabold tracking-wide
-      text-gray-900 dark:text-white
-      drop-shadow-md
-      transition-all duration-300
-      hover:border-gray-600
-      text-center sm:text-left
-    "
-        >
+      {/* Titre */}
+      <div className="mb-8 flex items-center gap-2 justify-center sm:justify-start">
+        <MessageCircle className="size-8 text-blue-600" />
+        <h2 className="border-b-2 border-gray-300 pb-2 text-3xl font-extrabold tracking-wide text-gray-900 dark:text-white">
           Contact
         </h2>
       </div>
 
+      {/* Erreur */}
       {error && (
-        <div className="mb-6 bg-red-100 text-red-800 p-4 rounded text-center shadow transition-all duration-500">
-          ❌ Une erreur est survenue. Veuillez réessayer.
+        <div className="mb-6 bg-red-100 text-red-800 p-4 rounded-lg text-center shadow">
+          Une erreur est survenue. Veuillez réessayer.
         </div>
       )}
 
-      <form
-        onSubmit={handleSubmit}
-        className="mt-6 max-w-xl mx-auto grid gap-4"
-      >
-        <input
-          type="text"
-          name="name"
-          placeholder="Votre nom"
-          required
-          className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:shadow-lg transition"
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Votre email"
-          required
-          className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:shadow-lg transition"
-        />
-        <textarea
-          name="message"
-          rows="5"
-          placeholder="Votre message"
-          required
-          className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:shadow-lg transition"
-        />
-        <input type="text" name="_gotcha" style={{ display: "none" }} />
-
-        <button
-          type="submit"
-          disabled={loading}
-          className={`flex items-center justify-center gap-2 bg-blue-600 text-white font-medium px-6 py-2 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg ${
-            loading ? "opacity-70 cursor-not-allowed" : "hover:bg-blue-700"
-          }`}
+      {/* Formulaire */}
+      {!showModal && (
+        <form
+          onSubmit={handleSubmit}
+          className="max-w-xl mx-auto grid gap-4 bg-white dark:bg-zinc-900 p-6 rounded-2xl shadow-lg border border-gray-200 dark:border-zinc-700"
         >
-          {loading && (
-            <svg
-              className="animate-spin h-5 w-5 text-white"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
+          {/* Nom */}
+          <div className="grid gap-1">
+            <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
+              Nom
+            </label>
+            <input
+              type="text"
+              name="name"
+              required
+              placeholder="Votre nom"
+              className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition
+                         text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500
+                         bg-white dark:bg-zinc-800"
+            />
+          </div>
+
+          {/* Email */}
+          <div className="grid gap-1">
+            <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
+              Email
+            </label>
+            <input
+              type="email"
+              name="email"
+              required
+              placeholder="Votre email"
+              className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition
+                         text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500
+                         bg-white dark:bg-zinc-800"
+            />
+          </div>
+
+          {/* Message */}
+          <div className="grid gap-1 relative">
+            <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
+              Message
+            </label>
+            <textarea
+              name="message"
+              rows={5}
+              maxLength={MAX_CHARS}
+              required
+              placeholder="Votre message"
+              value={message}
+              onChange={(e) => {
+                setMessage(e.target.value);
+                setRemaining(MAX_CHARS - e.target.value.length);
+              }}
+              className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition resize-none
+                         md:h-40 lg:h-48
+                         text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500
+                         bg-white dark:bg-zinc-800"
+            />
+
+            <button
+              type="button"
+              onClick={() => setZoomOpen(true)}
+              className="absolute top-2 right-2 p-1 bg-gray-200 dark:bg-zinc-700 rounded-full hover:bg-gray-300 dark:hover:bg-zinc-600 transition"
+              title="Agrandir le message"
             >
-              <circle
-                className="opacity-25"
-                cx="12"
-                cy="12"
-                r="10"
-                stroke="currentColor"
-                strokeWidth="4"
-              ></circle>
-              <path
-                className="opacity-75"
-                fill="currentColor"
-                d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
-              ></path>
-            </svg>
-          )}
-          {loading ? "Envoi..." : "Envoyer"}
-        </button>
-      </form>
+              <ZoomIn className="w-4 h-4 text-gray-600 dark:text-gray-300" />
+            </button>
 
-      <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <p
+              className={`text-xs text-right ${
+                remaining <= 50 ? "text-red-500" : "text-gray-400"
+              }`}
+            >
+              {remaining} caractère{remaining !== 1 ? "s" : ""} restant
+            </p>
+          </div>
+
+          <input type="text" name="_gotcha" className="hidden" />
+
+          <button
+            type="submit"
+            disabled={loading}
+            className={`flex items-center justify-center gap-2 bg-blue-600 text-white font-medium px-6 py-3 rounded-lg transition-all duration-300 shadow-md transform ${
+              loading
+                ? "opacity-70 cursor-not-allowed"
+                : "hover:bg-blue-700 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-400"
+            }`}
+          >
+            {loading ? "Envoi..." : "Envoyer"}
+          </button>
+        </form>
+      )}
+
+      {/* Liens */}
+      <div className="mt-10 flex flex-wrap justify-center gap-4">
         <a
-          href="mailto: clovisstefanutti@gmail.com"
-          className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-md hover:bg-blue-100 dark:hover:bg-blue-800 hover:shadow-lg transition-shadow"
+          href="mailto:clovisstefanutti@gmail.com"
+          className="p-4 bg-gray-100 dark:bg-gray-700 rounded-lg hover:shadow-lg hover:scale-105 transition transform"
         >
-          <Mail className="w-5 h-5 text-blue-600" />
+          <Mail className="w-6 h-6 text-blue-600" />
         </a>
 
         <a
-          href="tel: +33649189819"
-          className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-md hover:bg-blue-100 dark:hover:bg-blue-800 hover:shadow-lg transition-shadow"
+          href="tel:+33649189819"
+          className="p-4 bg-gray-100 dark:bg-gray-700 rounded-lg hover:shadow-lg hover:scale-105 transition transform"
         >
-          <Phone className="w-5 h-5 text-green-600" />
+          <Phone className="w-6 h-6 text-green-600" />
         </a>
 
         <a
           href="https://www.linkedin.com/in/clovis-stefanutti-87517a352/"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-md hover:bg-blue-100 dark:hover:bg-blue-800 hover:shadow-lg transition-shadow"
+          className="flex items-center gap-2 p-4 bg-gray-100 dark:bg-gray-700 rounded-lg hover:shadow-lg hover:scale-105 transition transform"
         >
-          <Linkedin className="w-5 h-5 text-blue-700" />
-          <span className="text-blue-700 font-medium">LinkedIn</span>
+          <Linkedin className="w-6 h-6 text-blue-700" />
+          <span className="font-medium">LinkedIn</span>
         </a>
 
         <a
           href="https://github.com/clostef"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-md hover:bg-blue-100 dark:hover:bg-blue-800 hover:shadow-lg transition-shadow"
+          className="flex items-center gap-2 p-4 bg-gray-100 dark:bg-gray-700 rounded-lg hover:shadow-lg hover:scale-105 transition transform"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-5 h-5 text-gray-800 dark:text-white"
-            fill="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path d="M12 0C5.37 0 0 5.373 0 12c0 5.303 3.438 9.8 8.205 11.385.6.113.82-.26.82-.577v-2.256c-3.338.727-4.033-1.416-4.033-1.416-.546-1.385-1.333-1.754-1.333-1.754-1.09-.745.084-.73.084-.73 1.205.084 1.84 1.24 1.84 1.24 1.07 1.834 2.805 1.304 3.492.996.107-.775.42-1.305.763-1.604-2.665-.3-5.466-1.332-5.466-5.931 0-1.31.468-2.381 1.236-3.221-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.3 1.23.96-.267 1.98-.4 3-.404 1.02.004 2.04.137 3 .404 2.29-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.873.118 3.176.77.84 1.236 1.911 1.236 3.221 0 4.61-2.804 5.628-5.475 5.921.432.372.816 1.103.816 2.222v3.293c0 .32.218.694.825.576C20.565 21.796 24 17.303 24 12c0-6.627-5.373-12-12-12z" />
-          </svg>
-          <span className="text-gray-800 dark:text-white font-medium">
-            GitHub
-          </span>
+          <Github className="w-6 h-6 text-gray-800 dark:text-gray-200" />
+          <span className="font-medium">GitHub</span>
         </a>
       </div>
 
-      {showModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60">
-          <div className="bg-white p-6 rounded-xl shadow-xl max-w-sm w-full text-center">
-            <h3 className="text-xl font-semibold text-green-600 mb-2">
-              Message envoyé !
+      {/* Zoom Modal */}
+      {zoomOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4 overflow-x-hidden"
+          onClick={() => handleBackdropClick(setZoomOpen)}
+        >
+          <div
+            className="bg-white dark:bg-zinc-900 p-6 rounded-2xl shadow-xl w-full max-w-md sm:max-w-3xl max-h-[80vh] sm:h-auto overflow-y-auto overflow-x-hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+              Prévisualisation
             </h3>
-            <p className="text-gray-700 mb-4">
-              Merci pour votre message. Je vous répondrai dès que possible.
+            <p className="whitespace-pre-wrap break-words text-gray-800 dark:text-gray-200">
+              {message}
+            </p>
+            <button
+              onClick={() => setZoomOpen(false)}
+              className="mt-6 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+            >
+              Fermer
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Confirmation Modale */}
+      {showModal && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4"
+          onClick={() => handleBackdropClick(setShowModal)}
+        >
+          <div
+            className="bg-white dark:bg-zinc-900 p-6 rounded-2xl shadow-xl max-w-sm w-full text-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h3 className="text-xl font-semibold text-green-600 mb-2">
+              Message envoyé
+            </h3>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">
+              Merci pour votre message. Je vous répondrai rapidement.
             </p>
             <button
               onClick={() => setShowModal(false)}
-              className="mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+              className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
             >
               Fermer
             </button>
