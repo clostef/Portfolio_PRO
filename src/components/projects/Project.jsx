@@ -103,7 +103,6 @@ export const Project = () => {
       drop-shadow-md
       border-b-2 border-pink-300 pb-2
       transition-all duration-300
-      hover:border-gray-600
       text-center sm:text-left
     "
         >

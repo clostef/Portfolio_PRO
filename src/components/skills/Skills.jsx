@@ -127,46 +127,47 @@ SkillCard.propTypes = {
 export const Skills = () => {
   return (
     <>
-      <div className="flex items-center gap-2 mt-10 mb-6 justify-center sm:justify-start">
-        <ClipboardCheck className="size-8 text-yellow-500" />
-        <h2
-          id="compétences"
-          className="
+      <section id="compétences">
+        <div className="flex items-center gap-2 mt-10 mb-6 justify-center sm:justify-start">
+          <ClipboardCheck className="size-8 text-yellow-500" />
+          <h2
+            className="
             text-3xl font-extrabold tracking-wide
             text-gray-900 dark:text-white
             border-b-2 border-gray-300 pb-2
             text-center sm:text-left
           "
-        >
-          Compétences
-        </h2>
-      </div>
+          >
+            Compétences
+          </h2>
+        </div>
 
-      <h3 className="flex flex-col items-center text-2xl font-semibold mb-6">
-        Front-end
-        <span className="mt-2 w-1 h-6 bg-yellow-500 rounded-full"></span>
-      </h3>
+        <h3 className="flex flex-col items-center text-2xl font-semibold mb-6">
+          Front-end
+          <span className="mt-2 w-1 h-6 bg-yellow-500 rounded-full"></span>
+        </h3>
 
-      <div className="flex flex-wrap gap-4 justify-center mb-10">
-        {frontendSkills.map((skill, idx) => (
-          <SkillCard key={skill.name} skill={skill} index={idx} />
-        ))}
-      </div>
+        <div className="flex flex-wrap gap-4 justify-center mb-10">
+          {frontendSkills.map((skill, idx) => (
+            <SkillCard key={skill.name} skill={skill} index={idx} />
+          ))}
+        </div>
 
-      <h3 className="flex flex-col items-center text-2xl font-semibold mb-6">
-        Back-end & Outils
-        <span className="mt-2 w-1 h-6 bg-yellow-500 rounded-full"></span>
-      </h3>
+        <h3 className="flex flex-col items-center text-2xl font-semibold mb-6">
+          Back-end & Outils
+          <span className="mt-2 w-1 h-6 bg-yellow-500 rounded-full"></span>
+        </h3>
 
-      <div className="flex flex-wrap gap-4 justify-center">
-        {backendAndTools.map((skill, idx) => (
-          <SkillCard
-            key={skill.name}
-            skill={skill}
-            index={frontendSkills.length + idx}
-          />
-        ))}
-      </div>
+        <div className="flex flex-wrap gap-4 justify-center">
+          {backendAndTools.map((skill, idx) => (
+            <SkillCard
+              key={skill.name}
+              skill={skill}
+              index={frontendSkills.length + idx}
+            />
+          ))}
+        </div>
+      </section>
     </>
   );
 };
