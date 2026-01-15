@@ -21,6 +21,11 @@ const menuItems = [
 ];
 
 export const Header = ({ darkMode, setDarkMode }) => {
+  const scrollToTop = (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <header
       className="
@@ -34,7 +39,8 @@ export const Header = ({ darkMode, setDarkMode }) => {
       <div className="hidden md:flex items-center w-full text-sm font-medium">
         <div className="flex items-center gap-8">
           <a
-            href="/"
+            href="#"
+            onClick={scrollToTop}
             className="flex items-center gap-2 text-lg font-semibold tracking-wide transition-colors duration-300 hover:text-blue-500"
           >
             <Laptop className="w-7 h-7 text-blue-600" />
@@ -92,18 +98,16 @@ export const Header = ({ darkMode, setDarkMode }) => {
           </SheetTrigger>
 
           <SheetContent side="left" className="flex flex-col justify-between">
-            <div className="sr-only">
-              <h2>Menu principal</h2>
-              <p>
-                Navigation principale du site avec les liens vers les sections
-                et les réseaux sociaux.
-              </p>
-            </div>
-
             <nav className="grid gap-6 text-lg font-medium mt-6">
               <SheetClose asChild>
                 <a
-                  href="/"
+                  href="#description"
+                  onClick={() => {
+                    setTimeout(
+                      () => window.scrollTo({ top: 0, behavior: "smooth" }),
+                      100
+                    );
+                  }}
                   className="flex items-center gap-2 text-lg font-semibold"
                 >
                   <Laptop className="w-6 h-6 text-blue-600" />

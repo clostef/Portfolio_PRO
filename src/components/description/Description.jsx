@@ -25,13 +25,18 @@ export const Description = () => {
         Développeur Front-End React
       </h3>
 
-      <article className="mt-6 space-y-5 text-base sm:text-lg leading-relaxed font-medium text-gray-700 dark:text-gray-300 opacity-0 animate-fade-in delay-400">
+      <article className="mt-6 space-y-4 sm:space-y-5 text-base sm:text-lg leading-relaxed font-medium text-gray-700 dark:text-gray-300 opacity-0 animate-fade-in delay-400">
         <p>
           <span className="highlight">Développeur Front-End React</span> formé
-          chez OpenClassrooms, je conçois des interfaces modernes, performantes
-          et maintenables. J’ai réalisé{" "}
+          chez OpenClassrooms, avec une approche orientée{" "}
+          <span className="highlight">composants</span>,{" "}
+          <span className="highlight">performance</span> et{" "}
+          <span className="highlight">maintenabilité</span>. J’ai réalisé{" "}
           <span className="highlight">12 projets concrets</span>, allant de
-          sites vitrines à des applications web dynamiques.
+          sites vitrines à des applications web dynamiques intégrant{" "}
+          <span className="highlight">authentification</span>,{" "}
+          <span className="highlight">consommation d’API</span> et{" "}
+          <span className="highlight">gestion d’état</span>.
         </p>
 
         <p>
@@ -49,21 +54,22 @@ export const Description = () => {
 
         <p>
           Je travaille régulièrement avec des{" "}
-          <span className="highlight">APIs</span>
-          et j’accorde une attention particulière au{" "}
-          <span className="highlight">responsive design</span>, à la cohérence
-          visuelle et à la mise en place d’un{" "}
-          <span className="highlight">design system</span>.
+          <span className="highlight">APIs</span> et j’accorde une attention
+          particulière au <span className="highlight">responsive design</span>,
+          à la cohérence visuelle et à la mise en place d’un{" "}
+          <span className="highlight">design system</span>. J’ai l’habitude de{" "}
+          <span className="highlight">respecter un design existant</span> et de
+          structurer mon code dans une logique proche d’un environnement
+          professionnel.
         </p>
 
         <p>
           Curieux et persévérant, je cherche constamment à{" "}
-          <span className="highlight">améliorer mes compétences</span>
-          et à proposer des solutions concrètes et efficaces. Je souhaite
-          rejoindre une équipe pour{" "}
-          <span className="highlight">collaborer</span>, apprendre et
-          <span className="highlight">contribuer activement</span> à des projets
-          ambitieux.
+          <span className="highlight">améliorer mes compétences</span> et à
+          proposer des solutions concrètes et efficaces. Je souhaite rejoindre
+          une équipe pour <span className="highlight">collaborer</span>,
+          apprendre et <span className="highlight">contribuer activement</span>{" "}
+          à des projets ambitieux.
         </p>
       </article>
 

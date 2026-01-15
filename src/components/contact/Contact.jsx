@@ -8,7 +8,7 @@ import {
   ZoomIn,
 } from "lucide-react";
 
-const MAX_CHARS = 500;
+const MAX_CHARS = 1000;
 
 export const Contact = () => {
   const [error, setError] = useState(false);
@@ -135,13 +135,14 @@ export const Contact = () => {
               onClick={() => setZoomOpen(true)}
               className="absolute top-2 right-2 p-1 bg-gray-200 dark:bg-zinc-700 rounded-full hover:bg-gray-300 dark:hover:bg-zinc-600 transition"
               title="Agrandir le message"
+              aria-label="Agrandir le message"
             >
               <ZoomIn className="w-4 h-4 text-gray-600 dark:text-gray-300" />
             </button>
 
             <p
-              className={`text-xs text-right ${
-                remaining <= 50 ? "text-red-500" : "text-gray-400"
+              className={`text-xs text-right transition-colors ${
+                remaining <= 100 ? "text-red-500" : "text-gray-400"
               }`}
             >
               {remaining} caractère{remaining !== 1 ? "s" : ""} restant
@@ -168,6 +169,7 @@ export const Contact = () => {
         <a
           href="mailto:clovisstefanutti@gmail.com"
           className="p-4 bg-gray-100 dark:bg-gray-700 rounded-lg hover:shadow-lg hover:scale-105 transition transform"
+          aria-label="Envoyer un email"
         >
           <Mail className="w-6 h-6 text-blue-600" />
         </a>
@@ -175,6 +177,7 @@ export const Contact = () => {
         <a
           href="tel:+33649189819"
           className="p-4 bg-gray-100 dark:bg-gray-700 rounded-lg hover:shadow-lg hover:scale-105 transition transform"
+          aria-label="Appeler"
         >
           <Phone className="w-6 h-6 text-green-600" />
         </a>
@@ -183,7 +186,8 @@ export const Contact = () => {
           href="https://www.linkedin.com/in/clovis-stefanutti-87517a352/"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 p-4 bg-gray-100 dark:bg-gray-700 rounded-lg hover:shadow-lg hover:scale-105 transition transform"
+          className="flex items-center gap-2 p-4 bg-gray-100 dark:bg-zinc-700 rounded-lg hover:shadow-lg hover:scale-105 transition transform"
+          aria-label="Voir le profil LinkedIn"
         >
           <Linkedin className="w-6 h-6 text-blue-700" />
           <span className="font-medium">LinkedIn</span>
@@ -193,7 +197,8 @@ export const Contact = () => {
           href="https://github.com/clostef"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 p-4 bg-gray-100 dark:bg-gray-700 rounded-lg hover:shadow-lg hover:scale-105 transition transform"
+          className="flex items-center gap-2 p-4 bg-gray-100 dark:bg-zinc-700 rounded-lg hover:shadow-lg hover:scale-105 transition transform"
+          aria-label="Voir le profil GitHub"
         >
           <Github className="w-6 h-6 text-gray-800 dark:text-gray-200" />
           <span className="font-medium">GitHub</span>
@@ -202,11 +207,11 @@ export const Contact = () => {
 
       {zoomOpen && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4 overflow-x-hidden"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4 transition-opacity duration-300 opacity-100"
           onClick={() => handleBackdropClick(setZoomOpen)}
         >
           <div
-            className="bg-white dark:bg-zinc-900 p-6 rounded-2xl shadow-xl w-full max-w-md sm:max-w-3xl max-h-[80vh] sm:h-auto overflow-y-auto overflow-x-hidden"
+            className="bg-white dark:bg-zinc-900 p-6 rounded-2xl shadow-xl w-full max-w-md sm:max-w-3xl max-h-[80vh] sm:h-auto overflow-y-auto overflow-x-hidden transform transition-transform duration-300 scale-100"
             onClick={(e) => e.stopPropagation()}
           >
             <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
@@ -218,6 +223,7 @@ export const Contact = () => {
             <button
               onClick={() => setZoomOpen(false)}
               className="mt-6 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+              aria-label="Fermer la prévisualisation"
             >
               Fermer
             </button>
@@ -227,11 +233,11 @@ export const Contact = () => {
 
       {showModal && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4 transition-opacity duration-300 opacity-100"
           onClick={() => handleBackdropClick(setShowModal)}
         >
           <div
-            className="bg-white dark:bg-zinc-900 p-6 rounded-2xl shadow-xl max-w-sm w-full text-center"
+            className="bg-white dark:bg-zinc-900 p-6 rounded-2xl shadow-xl max-w-sm w-full text-center transform transition-transform duration-300 scale-100"
             onClick={(e) => e.stopPropagation()}
           >
             <h3 className="text-xl font-semibold text-green-600 mb-2">
@@ -243,6 +249,7 @@ export const Contact = () => {
             <button
               onClick={() => setShowModal(false)}
               className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+              aria-label="Fermer le message envoyé"
             >
               Fermer
             </button>
